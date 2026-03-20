@@ -30,12 +30,25 @@ echo -e "${BLUE}        PDF Redaction Studio Installer        ${NC}"
 echo -e "${BLUE}==============================================${NC}"
 echo -e "System check and environment setup starting..."
 
-# 1. Dependency Check
+# 1. Create and navigate to project directory
+PROJECT_DIR="pdf-redaction-studio"
+if [ -d "$PROJECT_DIR" ]; then
+    warn "Directory '$PROJECT_DIR' already exists. Using existing directory."
+    cd "$PROJECT_DIR"
+else
+    info "Creating directory: $PROJECT_DIR"
+    mkdir -p "$PROJECT_DIR"
+    cd "$PROJECT_DIR"
+fi
+
+info "Working directory: $(pwd)"
+
+# 2. Dependency Check
 if ! command -v docker &> /dev/null; then
     error "Docker is not installed. Please install Docker first."
 fi
 
-# 2. Download Configuration Files
+# 3. Download Configuration Files
 # Helper function to download files
 download_file() {
     local url=$1
@@ -49,18 +62,18 @@ download_file() {
     fi
 }
 
-# 2. Download Configuration Files
+# 3. Download Configuration Files
 info "Downloading configuration from GitHub..."
 download_file "$REPO_RAW_URL/$COMPOSE_FILE" "$COMPOSE_FILE"
 download_file "$REPO_RAW_URL/$EXAMPLE_FILE" "$EXAMPLE_FILE"
 
-# 3. Ensure .env exists
+# 4. Ensure .env exists
 if [ ! -f "$ENV_FILE" ]; then
     info "Creating $ENV_FILE from $EXAMPLE_FILE."
     cp "$EXAMPLE_FILE" "$ENV_FILE"
 fi
 
-# 4. License Key Logic
+# 5. License Key Logic
 # Check shell environment first, then the .env file
 CURRENT_LICENSE=${!LICENSE_VAR:-$(grep -E "^${LICENSE_VAR}=" "$ENV_FILE" | cut -d'=' -f2- || true)}
 
@@ -91,12 +104,12 @@ else
     info "License key saved to $ENV_FILE."
 fi
 
-# 5. Execute Docker Compose
+# 6. Execute Docker Compose
 info "Pulling images and starting PDF Redaction Studio..."
 docker compose pull
 docker compose up -d
 
-# 6. Health Check
+# 7. Health Check
 info "Waiting for PDF Redaction Studio to stabilize..."
 
 open_docs() {
