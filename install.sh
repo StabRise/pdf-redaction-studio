@@ -9,7 +9,7 @@ set -euo pipefail
 REPO_RAW_URL="https://raw.githubusercontent.com/StabRise/pdf-redaction-studio/main"
 ENV_FILE=".env"
 EXAMPLE_FILE=".env.example"
-COMPOSE_FILE="docker-compose.yml"
+COMPOSE_FILE="docker-compose.yaml"
 LICENSE_VAR="PDF_REDACTION_LICENSE"
 PORTAL_URL="https://pdf-redaction.com/licenses"
 DOCS_URL="http://localhost:3000/"
