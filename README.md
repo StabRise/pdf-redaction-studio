@@ -28,7 +28,7 @@ PDF Redaction Studio is a powerful web-based application for redacting sensitive
 - **Secure Processing**: All processing happens on your own infrastructure
 - **Flexible Licensing**: Free trial available, with pay-as-you-go and subscription options
 
-![PDF Redaction Studio Screenshot](https://raw.githubusercontent.com/StabRise/pdf-redaction-studio/main/images/pdf-redaction-studio.png)
+<img src="https://raw.githubusercontent.com/StabRise/pdf-redaction-studio/main/images/pdf-redaction-studio.png" alt="PDF Redaction Studio Screenshot" height="600">
 
 ## Demo
 
