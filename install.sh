@@ -109,6 +109,11 @@ info "Pulling images and starting PDF Redaction Studio..."
 docker compose pull
 docker compose up -d
 
+# Show initial startup logs
+info "Services starting. Showing initial logs (Ctrl+C to skip log watching)..."
+timeout 10 docker compose logs --tail=50 --follow &
+LOGS_PID=$!
+
 # 7. Health Check
 info "Waiting for PDF Redaction Studio to stabilize..."
 
@@ -126,11 +131,19 @@ open_docs() {
     fi
 }
 sleep 5
+
+# Stop the log follower if still running
+kill $LOGS_PID 2>/dev/null || true
+
 if curl -s -f http://localhost:3000/ > /dev/null; then
     info "✅ Success! PDF Redaction Studio is available at $DOCS_URL"
     info "Next step: Please review and fill in the remaining environment variables in $ENV_FILE (use $EXAMPLE_FILE as a reference)."
     info "After updating $ENV_FILE, restart services with: docker compose up -d"
     open_docs
+    echo ""
+    info "💡 Tip: Use 'docker compose logs -f' to follow logs, or 'docker compose down' to stop services."
 else
     warn "API started but health check failed. Check logs with 'docker compose logs'."
+    info "Showing recent logs for debugging:"
+    docker compose logs --tail=50
 fi
