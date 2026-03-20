@@ -18,6 +18,9 @@
 
 PDF Redaction Studio is a powerful web-based application for redacting sensitive information from PDF documents. This is the backend container for the Studio edition.
 
+<img src="https://raw.githubusercontent.com/StabRise/pdf-redaction-studio/main/images/pdf-redaction-studio.png" alt="PDF Redaction Studio Screenshot" height="300">
+
+
 ## Features
 
 - **Professional PDF Redaction**: Advanced tools for redacting text, images, and metadata from PDFs
@@ -27,8 +30,6 @@ PDF Redaction Studio is a powerful web-based application for redacting sensitive
 - **Real-time Preview**: See redactions in real-time before applying changes
 - **Secure Processing**: All processing happens on your own infrastructure
 - **Flexible Licensing**: Free trial available, with pay-as-you-go and subscription options
-
-<img src="https://raw.githubusercontent.com/StabRise/pdf-redaction-studio/main/images/pdf-redaction-studio.png" alt="PDF Redaction Studio Screenshot" height="600">
 
 ## Demo
 
