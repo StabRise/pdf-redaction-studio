@@ -110,11 +110,13 @@ This project uses the following Docker images:
 - **[postgres](https://hub.docker.com/_/postgres)** - Official PostgreSQL database image
 - **[stabrise/pdf-redaction-studio-backend](https://hub.docker.com/r/stabrise/pdf-redaction-studio-backend)** - Backend API server
 - **[stabrise/pdf-redaction-studio-frontend](https://hub.docker.com/r/stabrise/pdf-redaction-studio-frontend)** - Frontend web interface
+- **[stabrise/pdf-redaction-api](https://hub.docker.com/r/stabrise/pdf-redaction-api)** - PDF Redaction API server
 
 You can pull individual images separately:
 ```bash
 docker pull stabrise/pdf-redaction-studio-backend:latest
 docker pull stabrise/pdf-redaction-studio-frontend:latest
+docker pull stabrise/pdf-redaction-api:latest
 ```
 
 ## Documentation

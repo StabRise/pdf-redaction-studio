@@ -27,7 +27,21 @@ services:
       db:
         condition: service_healthy
 
-  studio:
+  api: &main_app
+    image: stabrise/pdf-redaction-api:latest
+    restart: always
+    container_name: pdf-redaction-api
+    env_file:
+      - .env
+    ports:
+      - "8001:8001"
+
+    environment:
+      PDF_REDACTION_API_HOST: 0.0.0.0
+      TIMEOUT: 190
+      GRACEFUL_TIMEOUT: 190
+
+  studio:  &main_app
     image: stabrise/pdf-redaction-studio-frontend:latest
 
     expose:
