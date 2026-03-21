@@ -35,7 +35,7 @@ services:
     expose:
       - "8002"
     ports:
-      - "8002:8000"
+      - "8002:8002"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
       interval: 10s
@@ -45,6 +45,7 @@ services:
 
     environment:
       PDF_REDACTION_API_HOST: 0.0.0.0
+      PDF_REDACTION_API_PORT: 8002
       PDF_REDACTION_API_ENABLE_DEIDENTIFICATION_API: True
       TIMEOUT: 190
       GRACEFUL_TIMEOUT: 190
