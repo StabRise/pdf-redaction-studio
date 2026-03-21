@@ -30,6 +30,8 @@ services:
   api:
     image: stabrise/pdf-redaction-api:latest
     restart: always
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
     env_file:
       - .env
     expose:
@@ -38,6 +40,7 @@ services:
       - "8002:8002"
 
     environment:
+      HF_HOME: /root/.cache/huggingface
       PDF_REDACTION_API_HOST: 0.0.0.0
       PDF_REDACTION_API_PORT: 8002
       PDF_REDACTION_API_ENABLE_DEIDENTIFICATION_API: True
