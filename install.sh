@@ -87,8 +87,24 @@ else
     elif command -v xdg-open > /dev/null; then xdg-open "$PORTAL_URL"
     else warn "Please visit: $PORTAL_URL"; fi
 
-    # Secure prompt
-    read -r -s -p "Enter your License Key: " USER_KEY
+    # Secure prompt with asterisks
+    echo -n "Enter your License Key: "
+    USER_KEY=""
+    while IFS= read -r -n1 -s char; do
+        # Enter key
+        if [[ "$char" == "" ]]; then
+            break
+        # Backspace/Delete
+        elif [[ "$char" == $'\177' || "$char" == $'\010' ]]; then
+            if [ -n "$USER_KEY" ]; then
+                USER_KEY="${USER_KEY%?}"
+                printf '\b \b'
+            fi
+        else
+            USER_KEY+="$char"
+            printf '*'
+        fi
+    done
     echo
 
     if [ -z "$USER_KEY" ]; then

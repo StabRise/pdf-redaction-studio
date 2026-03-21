@@ -27,17 +27,25 @@ services:
       db:
         condition: service_healthy
 
-  api: &main_app
+  api:
     image: stabrise/pdf-redaction-api:latest
     restart: always
-    container_name: pdf-redaction-api
     env_file:
       - .env
+    expose:
+      - "8002"
     ports:
-      - "8001:8001"
+      - "8000:8002"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
     environment:
       PDF_REDACTION_API_HOST: 0.0.0.0
+      PDF_REDACTION_API_ENABLE_DEIDENTIFICATION_API: True
       TIMEOUT: 190
       GRACEFUL_TIMEOUT: 190
 
@@ -54,4 +62,7 @@ services:
     env_file:
       - .env
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+      api:
+        condition: service_healthy
