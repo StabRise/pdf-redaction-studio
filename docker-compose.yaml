@@ -44,7 +44,7 @@ services:
     ports:
       - "8002:8002"
     healthcheck:
-      test: curl -f http://localhost:8000/api/docs || exit 1
+      test: curl -f http://localhost:8002/api/docs || exit 1
       interval: 10s
       timeout: 5s
       retries: 5
