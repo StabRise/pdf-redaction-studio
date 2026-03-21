@@ -127,7 +127,7 @@ docker compose up -d
 
 # Show initial startup logs
 info "Services starting. Showing initial logs (Ctrl+C to skip log watching)..."
-timeout 10 docker compose logs --tail=50 --follow &
+perl -e 'alarm 10; exec @ARGV' docker compose logs --tail=50 --follow &
 LOGS_PID=$!
 
 # 7. Health Check
