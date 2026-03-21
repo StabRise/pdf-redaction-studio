@@ -26,13 +26,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    healthcheck:
-      test: curl -f http://localhost:8000/api/schema/swagger-ui/ || exit 1
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-
 
   api:
     image: stabrise/pdf-redaction-api:latest
@@ -43,12 +36,6 @@ services:
       - "8002"
     ports:
       - "8002:8002"
-    healthcheck:
-      test: curl -f http://localhost:8002/api/docs || exit 1
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
 
     environment:
       PDF_REDACTION_API_HOST: 0.0.0.0
