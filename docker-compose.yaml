@@ -16,7 +16,7 @@ services:
       retries: 10
 
   backend:
-    image: stabrise/pdf-redaction-studio-backend:0.1.0
+    image: stabrise/pdf-redaction-studio-backend:latest
     expose:
       - "8000"
     ports:
