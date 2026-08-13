@@ -14,6 +14,15 @@
     <a href="https://stabrise.com"><img alt="StabRise" src="https://img.shields.io/badge/powered%20by-StabRise-orange.svg?style=flat&colorA=E1523D&colorB=blue"/></a>
 </p>
 
+<p align="center">
+  <a href="https://apps.microsoft.com/detail/9p9g1wdm89qw">
+    <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft" height="48" />
+  </a>
+  <a href="https://snapcraft.io/pdf-redaction-studio">
+    <img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" alt="Get it from the Snap Store" height="43" />
+  </a>
+</p>
+
 # PDF Redaction Studio: Self-Hosted Secure Document Redaction
 
 PDF Redaction Studio is a powerful web-based application for redacting sensitive information from PDF documents. This is the backend container for the Studio edition.
